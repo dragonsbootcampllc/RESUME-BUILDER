@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import PersonalInfoForm from './Pages/Component/PersonalInfoForm';
+// import SocialLinks from './Pages/Component/SocialLinks';
+// import EmploymentHistory from './Pages/Component/EmploymentHistory';
+// import CVTemplate from './Pages/Component/CVTemplate';
+// import Container from './Pages/Component/Container';
+import { useEffect } from "react";
+import styles from "./App.module.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  var input = 
+  [
+    'ahmed',
+    "Ali",
+    "hoss",
+    "etc..."
+  ]
+  useEffect(() => {
+    for (let index = 0; index < 4; index++) {
+      window.localStorage.setItem(`input[${index}]`, input[index]);
+      console.log(window.localStorage.getItem(`input[${index}]`));
+    }
+  }, []);
+
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react bg-slate-900" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {/* <PersonalInfoForm /> */}
+      {/* <SocialLinks /> */}
+      {/* <EmploymentHistory /> */}
+      {/* <CVTemplate /> */}
+      {/* <Container /> */}
+      <h1 className={`${styles.s} ${styles.h}`}>Test</h1>
     </>
   )
 }
 
-export default App
+export default App;
