@@ -1,8 +1,10 @@
+// Sondos =========================
 import { useRef, useState } from 'react'
 import Draggable from 'react-draggable';
+import CVTemplate from './CVTemplate';
 
-function App() {
-  const [scale, setScale] = useState(1);
+function Container() {
+  const [scale, setScale] = useState(0.7);
   const containerRef = useRef(null);
 
   //zoom in function
@@ -14,30 +16,25 @@ function App() {
     setScale((scale) => scale - 0.1)
   }
 
-  const [position, setPosition] = useState({x: 0, y: 0});
-
   return (
-    <section className="characters bg-slate-300 w-full h-screen p-10 " >
-      <Draggable
-        ref={containerRef}
-      >
-        <div className="cvContainerEle duration-[.01s] w-fit h-fit -z-10 overflow-hidden">
-          <div className="bg-slate-200 w-[200px] aspect-[9/16] m-auto -z-10" style={{transform: `scale(${scale})`}}>
-            <h1>user Name</h1>
-            <p>title job</p>
-            <p>phone Number</p>
-            <p style={{transform: `translate(${position.x}px, ${position.y}px)`}}>{position.x}   |   {position.y}</p>
+    <>
+      <section className="characters bg-slate-300 w-[calc(100%-320px)] h-screen p-10 overflow-hidden overflow-y-scroll relative" >
+        <Draggable ref={containerRef} >
+          <div>
+            <div style={{ transform: `scale(${scale})` }}>
+              <CVTemplate/>
+            </div>
           </div>
+        </Draggable>
+        <div className="fixed z-10 right-10 bottom-10 flex gap-1 flex-col">
+          <button className="bg-slate-800 w-8 h-8  rounded-full   text-2xl  flex  justify-center align-center text-white"
+            onClick={handelZoomIn}>+</button>
+          <button className="bg-slate-800  rounded-full w-8 h-8 flex  justify-center align-center text-2xl text-white" onClick={handelZoomOut}>-</button>
         </div>
-      </Draggable> 
-      <div className="text-center z-10" >
-        <button className="bg-amber-300 px-4 border-r-2 border-solid border-slate-400 text-xl z-10"
-          onClick={handelZoomIn}>+</button>
-        <button className="bg-amber-300 px-4 text-xl z-10" onClick={handelZoomOut}>-</button>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }
 
 
-export default App
+export default Container;

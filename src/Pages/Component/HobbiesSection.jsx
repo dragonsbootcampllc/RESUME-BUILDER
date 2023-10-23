@@ -1,3 +1,4 @@
+// Mohamed ===============
 import { useEffect, useState } from "react";
 import EmojiPicker from "emoji-picker-react";
 
@@ -62,12 +63,12 @@ const HobbiesSection = () => {
   };
 
   useEffect(() => {
+    const showConsole = () => {
+      console.log(data);
+    };
+
     showConsole();
   }, [data]);
-
-  const showConsole = () => {
-    console.log(data);
-  };
 
   return (
     <div className="bg-white p-6 rounded shadow my-10">

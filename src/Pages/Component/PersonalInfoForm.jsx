@@ -1,312 +1,206 @@
+// Yasmen
+import { useUserName, useUserJob, useUserAge, useUserPhone, useUserEmail, useUserAbout, useUserImageUrl } from "../Data/PersonalInformationData";
 import { useState } from "react";
-import Info from "./info";
 
 const PersonalInfoForm = () => {
-  const [name, setName] = useState("");
-  const [job, setJob] = useState("");
-  const [age, setAge] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [street, setStreet] = useState("");
-  const [city, setCity] = useState("");
-  const [country, setCountry] = useState("");
-  const [about, setAbout] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  /* 
+  We can replace this useState with type char with one with type boolean
+  const [buttonState,setButtonState]=useState('-');
+  */
+  const [buttonState, setButtonState] = useState(false);
+  const { setUserName } = useUserName();
+  const { setUserJob } = useUserJob();
+  const { setUserAge } = useUserAge();
+  const { setUserPhone } = useUserPhone();
+  const { setUserEmail } = useUserEmail();
+  const { setUserImageUrl } = useUserImageUrl();
+  const { setUserAbout } = useUserAbout();
 
   const nameHandler = (value) => {
-    setName(value);
+    if (value === "") setUserName("Your Name");
+    else setUserName(value);
   };
 
   const jobHandler = (value) => {
-    setJob(value);
+    if (value === "") setUserJob("Job title");
+    else setUserJob(value);
   };
 
   const ageHandler = (value) => {
-    setAge(value);
+    if (value === "") setUserAge("--");
+    else setUserAge(value);
   };
 
   const phoneHandler = (value) => {
-    setPhone(value);
+    if (value === "") setUserPhone("+201023456789");
+    else setUserPhone(value);
   };
 
   const emailHandler = (value) => {
-    setEmail(value);
-  };
-
-  const streetHandler = (value) => {
-    setStreet(value);
-  };
-
-  const cityHandler = (value) => {
-    setCity(value);
-  };
-
-  const countryHandler = (value) => {
-    setCountry(value);
+    if (value === "") setUserEmail("Your_Mail@Example.com");
+    else setUserEmail(value);
   };
 
   const aboutHandler = (value) => {
-    setAbout(value);
+    if (value === "") setUserAbout("Tell something about you...");
+    else setUserAbout(value);
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
 
-    reader.onloadend = () => {
-      const imageUrl = reader.result;
-      setImageUrl(imageUrl);
-    };
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    const imageUrl = URL.createObjectURL(file);
+    setUserImageUrl(imageUrl);
+  };
 
-    if (file) {
-      reader.readAsDataURL(file);
+  /*
+  We can do this with more clean code
+  const formAppearance = () =>{
+    if(buttonState === '+')
+    {
+      document.getElementById("form-container").style.display="block";
+      return setButtonState("-")
     }
-  };
-  
+    else{
+      document.getElementById("form-container").style.display="none";
+      return setButtonState("+")
+    }
+  }
+  */
+
   return (
-    <>
-      <form className="">
-        {/* unuseful */}
-        <div className="bg-zinc-800">
-          {/* unuseful */}
-          <div className="border-b border-gray-900/10 pb-12">
-            <h1 className="text-base font-semibold leading-7 text-gray-100 ms-64 pt-10">
-              Personal Information
-            </h1>
-            <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  Name
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="name"
-                    id="name"
-                    className="block w-full rounded-md border-0 p-2.5 text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-100 placeholder:text-gray-100  focus:ring-indigo-600 sm:text-sm sm:leading-6 "
-                    onChange={(e) => {
-                      nameHandler(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
-              
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="job-title"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  Job Title
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="job-title"
-                    id="job-title"
-                    className="block w-full rounded-md border-0 p-2.5  text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) => {
-                      jobHandler(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
+    <div className={`${(buttonState ? 'pb-6' : 'pb-0')} border-b border-gray-300 h-full`}>
+      <div className='flex justify-between py-4 px-6'>
+        <h1 className="text-xl font-semibold" >Personal Information</h1>
+        <button className='bg-white-500 inline-block text-3xl pl-4' onClick={() => setButtonState(!buttonState)}>{(buttonState ? '-' : '+')}</button>
+      </div>
+      <form className={`${(buttonState ? 'h-auto' : 'h-0')} transition-all overflow-hidden flex flex-col gap-2 px-8`}>
+        {/* Name */}
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          onChange={(e) => {
+            nameHandler(e.target.value);
+          }}
+        />
 
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="age"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  Age
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="number"
-                    name="age"
-                    id="age"
-                    className="block w-full rounded-md border-0 p-2.5  text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) => {
-                      ageHandler(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
+        {/* Job */}
+        <input
+          type="text"
+          name="job-title"
+          placeholder="Job title"
+          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          onChange={(e) => {
+            jobHandler(e.target.value);
+          }}
+        />
 
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="phone"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  Phone Number
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    className="block w-full rounded-md border-0 p-2.5  text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) => {
-                      phoneHandler(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
+        {/* Age */}
+        <input
+          type="number"
+          name="age"
+          id="age"
+          placeholder="Age"
+          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          onChange={(e) => {
+            ageHandler(e.target.value);
+          }}
+        />
 
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  Email address
-                </label>
-                <div className="mt-2">
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    className="block w-full rounded-md border-0 p-2.5  text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) => {
-                      emailHandler(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
+        {/* Phone */}
+        <input
+          type="text"
+          name="phone"
+          placeholder="Phone"
+          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          onChange={(e) => {
+            phoneHandler(e.target.value);
+          }}
+        />
 
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="street-address"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  Street address
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="street-address"
-                    id="street-address"
-                    className="block w-full rounded-md border-0 p-2.5  text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) => {
-                      streetHandler(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
+        {/* Email */}
+        <input
+          id="email"
+          name="email"
+          type="email"
+          placeholder="Email"
+          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          onChange={(e) => {
+            emailHandler(e.target.value);
+          }}
+        />
 
-              <div className="col-span-5 sm:col-start-1 ms-64">
-                <label
-                  htmlFor="city"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  City
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    className="block w-full rounded-md border-0 p-2.5  text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    onChange={(e) => {
-                      cityHandler(e.target.value);
-                    }}
-                  />
-                </div>
-              </div>
+        {/* Streat */}
+        {/* <div className="ms-12 mt-2">
+          <input
+            type="text"
+            name="street-address"
+            placeholder="Stree address"
+            className="w-5/6 border border-gray-300 p-2 placeholder-gray-500 focus:outline-none"
+            onChange={(e) => {
+              streetHandler(e.target.value);
+            }}
+          />
+        </div> */}
 
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="country"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  Country
-                </label>
-                <div className="mt-2 w-full">
-                  <select
-                    id="country"
-                    name="country"
-                    className="block w-full rounded-md border-0 p-2.5  text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                    onChange={(e) => {
-                      countryHandler(e.target.value);
-                    }}
-                  >
-                    <option>Egypt</option>
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
-                  </select>
-                </div>
-              </div>
+        {/* City */}
+        {/* <div className="ms-12 mt-2">
+          <input
+            type="text"
+            name="city"
+            placeholder="City"
+            className="w-5/6 border border-gray-300 p-2 placeholder-gray-500 focus:outline-none"
+            onChange={(e) => {
+              cityHandler(e.target.value);
+            }}
+          />
+        </div> */}
 
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="about"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  About
-                </label>
-                <div className="mt-2">
-                  <textarea
-                    id="about"
-                    name="about"
-                    rows={3}
-                    className="block w-full rounded-md border-0 p-2.5 text-gray-100 bg-zinc-800 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                    defaultValue={""}
-                    onChange={(e) => {
-                      aboutHandler(e.target.value);
-                    }}
-                  />
-                </div>
-                <p className="mt-3 text-sm leading-6 text-gray-100">
-                  Write a few sentences about yourself.
-                </p>
-              </div>
+        {/* Country */}
+        {/* <div className="ms-12 mt-2">
+          <select
+            name="country"
+            className="w-5/6 border border-gray-300 p-2 placeholder-gray-500 focus:outline-none"
+            onChange={(e) => {
+              countryHandler(e.target.value);
+            }}
+          >
+            <option>Egypt</option>
+            <option>United States</option>
+            <option>Canada</option>
+            <option>Mexico</option>
+          </select>
+        </div> */}
 
-              <div className="col-span-5 ms-64">
-                <label
-                  htmlFor="cover-photo"
-                  className="block text-sm font-medium leading-6 text-gray-100"
-                >
-                  IMG
-                </label>
-                <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-100/25 px-6 py-10">
-                  <div className="text-center">
-                    <div className="mt-4 flex text-sm leading-6 text-gray-100">
-                      <label
-                        htmlFor="image-upload"
-                        className="relative cursor-pointer rounded-md font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
-                      >
-                        <span>Upload image</span>
-                        <input
-                          id="image-upload"
-                          name="file-upload"
-                          type="file"
-                          accept="image/*"
-                          className="sr-only"
-                          onChange={handleFileChange}
-                        />
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        {/* About */}
+        <textarea
+          name="about"
+          rows={3}
+          placeholder="Write a few sentences about yourself"
+          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          defaultValue={''}
+          onChange={(e) => {
+            aboutHandler(e.target.value);
+          }}
+        />
+
+        {/* Image */}
+        <div className="text-center w-full rounded-lg border-dashed p-16 border border-gray-300 placeholder-gray-500 focus:outline-none" onDragOver={(event) => event.preventDefault()} onDrop={handleDrop}>
+          <label
+            htmlFor="image-upload"
+            className="cursor-pointer font-semibold text-indigo-600"
+          >
+            <span>Upload image</span>
+            <input id="image-upload" name="file-upload" type="file" accept="image/*" className="sr-only"
+              onChange={() => { handleDrop(event) }}
+            />
+          </label>
         </div>
       </form>
-      <Info
-        name={name}
-        job={job}
-        age={age}
-        phone={phone}
-        email={email}
-        street={street}
-        city={city}
-        country={country}
-        about={about}
-        imageUrl={imageUrl}
-      />
-    </>
+    </div>
   );
 };
 

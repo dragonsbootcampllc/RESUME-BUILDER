@@ -1,20 +1,17 @@
-// import PersonalInfoForm from './Pages/Component/PersonalInfoForm';
-// import SocialLinks from './Pages/Component/SocialLinks';
-// import EmploymentHistory from './Pages/Component/EmploymentHistory';
-// import CVTemplate from './Pages/Component/CVTemplate';
-// import Container from './Pages/Component/Container';
-import HobbiesSection from "./Component/HobbiesSection";
+import PersonalInfoForm from "./Component/PersonalInfoForm";
+// import CVTemplate from "./Component/CVTemplate";
+import Container from "./Component/Container";
 
 function App() {
+
   return (
-    <>
-      {/* <PersonalInfoForm /> */}
-      {/* <SocialLinks /> */}
-      {/* <EmploymentHistory /> */}
-      {/* <CVTemplate /> */}
-      {/* <Container /> */}
-      <HobbiesSection />
-    </>
+    <main className="flex relative justify-end">
+      <nav className="w-[320px] fixed left-0 top-0 bg-white min-h-screen z-50">
+        <PersonalInfoForm />
+      </nav>
+      {/* className=" flex justify-center items-center bg-gray-400" */}
+      <Container />
+    </main>
   )
 }
 
