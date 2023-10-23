@@ -1,7 +1,10 @@
 // Rahma =======================
 import { useUserName, useUserJob, useUserAge, useUserPhone, useUserEmail, useUserAbout, useUserImageUrl } from "../Data/PersonalInformationData";
+import { useWebsiteURL, useFacebookURL, useTwitterURL, useLinkedInURL } from '../Data/SocialLinksData';
+import { useEmploymentHistory } from "../Data/EmpoymentHistoryData";
 
 function CVTemplate() {
+  // Personal information
   const { userName } = useUserName();
   const { userJob } = useUserJob();
   // const { userAge } = useUserAge();
@@ -10,6 +13,14 @@ function CVTemplate() {
   const { userImageUrl } = useUserImageUrl();
   const { userAbout } = useUserAbout();
 
+  // Social Links
+  const { websiteURL } = useWebsiteURL();
+  const { facebookURL } = useFacebookURL();
+  const { twitterURL } = useTwitterURL();
+  const { linkedInURL } = useLinkedInURL();
+
+  // Employment History
+  const { employmentHistory } = useEmploymentHistory();
 
   return (
     <section className='bg-white w-[21cm] h-[29.7cm] p-[50px]'>
@@ -23,7 +34,7 @@ function CVTemplate() {
         </div>
       </div>
 
-      <div className=' flex gap-[15%] mt-[40px] xd:block '>
+      <div className=' flex gap-[15%] mt-[40px]'>
         <div className=' grid gap-[20px] w-[40%] xd:block'>
           <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>education</p>
 
@@ -46,9 +57,15 @@ function CVTemplate() {
           </div>
 
           <div>
-            <p className='  font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>contact</p>
-            <p className=' text-slate-600 '>{userPhone}</p>
-            <p className=' text-slate-600 '>{userEmail}</p>
+            <p className='font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>contact</p>
+            <div className='flex flex-col gap-2 mt-2 text-lg'>
+              <a className='text-blue-700 underline' href={`tel:${userPhone}`} >{userPhone}</a>
+              <a className='text-blue-700 underline' href={`mailto:${userEmail}`} >{userEmail}</a>
+              {(facebookURL !== `` && <a className='text-blue-700 underline' href={facebookURL}>{facebookURL}</a>)}
+              {(twitterURL !== `` && <a className='text-blue-700 underline' href={twitterURL}>{twitterURL}</a>)}
+              {(linkedInURL !== `` && <a className='text-blue-700 underline' href={linkedInURL}>{linkedInURL}</a>)}
+              {(websiteURL !== `` && <a className='text-blue-700 underline' href={websiteURL}>{websiteURL}</a>)}
+            </div>
           </div>
         </div>
 
@@ -61,37 +78,23 @@ function CVTemplate() {
 
           <div className='flex gap-[40px]'>
             <div className='grid gap-[55px] xd:block'>
-              <div>
-                <p className=' text-slate-600 '>2020 - prsent</p>
-                <p className=' text-slate-600 '>company name</p>
-              </div>
-
-              <div>
-                <p className=' text-slate-600 '>2017 - 2019</p>
-                <p className=' text-slate-600 '>company name</p>
-              </div>
-
-              <div>
-                <p className=' text-slate-600 '>2015 - 2017</p>
-                <p className=' text-slate-600 '>company name</p>
-              </div>
+              {employmentHistory.map((ele, idx) => (
+                <div key={idx}>
+                  <p className=' text-slate-600 '>{ele.startDate} - {ele.endDate}</p>
+                  <p className=' text-slate-600 '>{ele.companyName}</p>
+                </div>
+              ))}
             </div>
 
             <div className='grid xd:block '>
               <div>
-                <p className=' font-bold text-[16px] '>senior ux desiner</p>
-                <p className=' text-slate-600 '>lorem lorem lorem company</p>
               </div>
-
-              <div>
-                <p className=' font-bold text-[16px]'>junior ux desiner</p>
-                <p className=' text-slate-600 '>lorem lorem lorem company</p>
-              </div>
-
-              <div>
-                <p className=' font-bold text-[16px]'> ui desiner</p>
-                <p className=' text-slate-600 '>lorem lorem lorem company</p>
-              </div>
+              {employmentHistory.map((ele, idx) => (
+                <div key={idx}>
+                  <p className=' font-bold text-[16px] '>{ele.jobTitle}</p>
+                  <p className=' text-slate-600 '>{ele.details}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

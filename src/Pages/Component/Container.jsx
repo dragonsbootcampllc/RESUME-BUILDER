@@ -13,7 +13,7 @@ function Container() {
   }
   //zoom out function
   const handelZoomOut = () => {
-    setScale((scale) => scale - 0.1)
+    if (scale > 0.2) setScale((scale) => scale - 0.1)
   }
 
   return (
@@ -27,9 +27,9 @@ function Container() {
           </div>
         </Draggable>
         <div className="fixed z-10 right-10 bottom-10 flex gap-1 flex-col">
-          <button className="bg-slate-800 w-8 h-8  rounded-full   text-2xl  flex  justify-center align-center text-white"
+          <button className="bg-slate-800 w-9 aspect-square  rounded-full   text-2xl  flex  justify-center align-center text-white leading-8"
             onClick={handelZoomIn}>+</button>
-          <button className="bg-slate-800  rounded-full w-8 h-8 flex  justify-center align-center text-2xl text-white" onClick={handelZoomOut}>-</button>
+          <button className="bg-slate-800  rounded-full w-9 aspect-square flex  justify-center align-center text-2xl text-white leading-8" onClick={handelZoomOut}>–</button>
         </div>
       </section>
     </>

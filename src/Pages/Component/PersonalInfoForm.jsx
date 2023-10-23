@@ -70,12 +70,12 @@ const PersonalInfoForm = () => {
   */
 
   return (
-    <div className={`${(buttonState ? 'pb-6' : 'pb-0')} border-b border-gray-300 h-full`}>
-      <div className='flex justify-between py-4 px-6'>
-        <h1 className="text-xl font-semibold" >Personal Information</h1>
-        <button className='bg-white-500 inline-block text-3xl pl-4' onClick={() => setButtonState(!buttonState)}>{(buttonState ? '-' : '+')}</button>
+    <div className="py-3 border-b border-gray-300 w-full">
+      <div className='flex justify-between px-6'>
+        <h1 className="text-base leading-8 font-semibold" >Personal Information</h1>
+        <button className='text-2xl pl-4' onClick={() => setButtonState(!buttonState)}>{(buttonState ? '–' : '+')}</button>
       </div>
-      <form className={`${(buttonState ? 'h-auto' : 'h-0')} transition-all overflow-hidden flex flex-col gap-2 px-8`}>
+      <form className={`${(!buttonState && 'hidden')} mt-6 overflow-hidden flex flex-col gap-2 px-8`}>
         {/* Name */}
         <input
           type="text"

@@ -1,97 +1,107 @@
 // Abanoub ===========
 import { useState } from "react";
-import Liststyletext from "./Liststyletext";
-import { document } from "postcss";
+import { useEmploymentHistory } from "../Data/EmpoymentHistoryData";
+// import Liststyletext from "./Liststyletext";
 
 function EmploymentHistory() {
-  const [convertDot, setDot] = useState('+');
-  const [text, setText] = useState("");
+  const [displayContent, setDisplayContent] = useState(false);
+  const { employmentHistory, setEmploymentHistory } = useEmploymentHistory();
 
-  const handleChange = (event) => {
-    setText(event.target.value);
-  };
-
-  const [p, setfo] = useState(`h-0`);
-  function pointer() {
-    if (convertDot == "+") {
-      setfo(`h-full`);
-      return setDot("-");
-
-    }
-    else {
-      setfo(`h-0`);
-      return setDot("+");
-    }
-
+  const handleStartDate = (value, index) => {
+    var newHistory = employmentHistory;
+    if (value != '') newHistory[index].startDate = value;
+    else newHistory[index].startDate = '--/--/----';
+    setEmploymentHistory(newHistory);
   }
 
-  function changeV(i) {
-    if (i == 0) {
-      document.querySelector(".title_jop").value = this.value;
-    }
-    else if (i == 1) {
-      document.querySelector(".coumpanies").value = this.value;
-    }
-    else if (i == 2) {
-      document.querySelector(".start").value = this.value;
-    }
-    else if (i == 3) {
-      document.querySelector(".end").value = this.value;
-    }
-    else if (i == 4) {
-      document.querySelector(".city").value = this.value;
-    }
-    else if (i == 5) {
-      document.querySelector(".textareaa").value = this.value;
-    }
+  const handleEndDate = (value, index) => {
+    var newHistory = employmentHistory;
+    if (value != '') newHistory[index].endDate = value;
+    else newHistory[index].endDate = '--/--/----';
+    setEmploymentHistory(newHistory);
   }
 
-  const list = [
-    { typeinput: "text", title: "jop title", placeholdername: "jop" },
-    { typeinput: "text", title: "companies", placeholdername: "componey" },
-    { typeinput: "date", title: "date1", placeholdername: "date1" },
-    { typeinput: "date", title: "date2", placeholdername: "date2" },
-    { typeinput: "text", title: "city your live", placeholdername: "city" }
-  ]
+  const handleCompanyName = (value, index) => {
+    var newHistory = employmentHistory;
+    if (value != '') newHistory[index].companyName = value;
+    else newHistory[index].companyName = 'Company Name';
+    setEmploymentHistory(newHistory);
+  }
+
+  const handleJobTitle = (value, index) => {
+    var newHistory = employmentHistory;
+    if (value != '') newHistory[index].jobTitle = value;
+    else newHistory[index].jobTitle = 'Job Title';
+    setEmploymentHistory(newHistory);
+  }
+
+  const handleDetails = (value, index) => {
+    var newHistory = employmentHistory;
+    if (value != '') newHistory[index].details = value;
+    else newHistory[index].details = 'Details...';
+    setEmploymentHistory(newHistory);
+  }
+
   return (
-    <>
-      <div className="container_history  border-b-[#eee] border-b-2 p-6 capitalize">
-        <div className="flex justify-between items-center">
-          <h3 onClick={pointer} className="font-black cursor-pointer text-[1.2rem] max-sm:text-[1rem]">employment history</h3>
-          <div onClick={pointer} className="dot w-12 text-center self-start font-black text-[1.3rem] max-sm:text-[1rem] cursor-pointer">
-            {convertDot}
-          </div>
-        </div>
-        <form className={`container_input ${p}  overflow-hidden `}>
-          {
-            list.map((item, index) => {
-              return (
-                <div key={index} className="container_name my-[1rem]">
-                  <p className="font-black text-[1rem] my-[1rem]">{item.title}</p>
-                  <input onKeyDown={() => changeV(index)} type={item.typeinput} name={item.title} placeholder={item.placeholdername} className="w-full p-2 text-[0.9rem] font-black placeholder:text-[#00000070] placeholder:font-black placeholder:capitalize border border-[#eee] rounded-md " />
-                </div>
-              )
-            })
-          }
-          <div className="containstyle border border-[#eee] rounded-md">
-            <Liststyletext />
-            <div className="textarea">
-              <textarea value={text}
-                onChange={handleChange}
-                className="w-full  p-1" ></textarea>
+    <div className="py-3 border-b border-gray-300 w-full">
+      <div className="flex justify-between px-6">
+        <h2 className="font-semibold leading-8 text-base">Employment history</h2>
+        <button
+          className="pl-4 text-2xl"
+          onClick={() => setDisplayContent(!displayContent)}
+        >
+          {displayContent ? '–' : '+'}
+        </button>
+      </div>
+
+      <div className={`mt-6 flex flex-col gap-4 px-8 ${!displayContent && 'hidden'}`}>
+        {employmentHistory.map((ele, idx) => (
+          <div key={idx} className="flex flex-col gap-2">
+            <div className="flex justify-between">
+              <h1 className="font-semibold text-gray-500">Employment {idx+1}</h1>
+              {(idx > 0 && <button onClick={() => setEmploymentHistory(employmentHistory.filter((ele, CIdx)=>{return CIdx != idx}))} className="text-2xl leading-4 text-red-500 font-semibold">–</button>)}
+            </div>
+            <input
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              type="text"
+              placeholder='Job title'
+              onChange={(e) => handleJobTitle(e.target.value, idx)}
+            />
+
+            <input
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              type="text"
+              placeholder='Company name'
+              onChange={(e) => handleCompanyName(e.target.value, idx)}
+            />
+
+            <div className="rounded-md overflow-hidden flex border border-gray-300 ">
+              <input
+                className="w-full px-3 py-2 focus:outline-none text-sm"
+                type="date"
+                placeholder='Start Date'
+                onChange={(e) => handleStartDate(e.target.value, idx)}
+              />
+              <input
+                className="w-full px-3 py-2 border-l border-gray-300 focus:outline-none text-sm"
+                type="date"
+                placeholder='end Date'
+                onChange={(e) => handleEndDate(e.target.value, idx)}
+              />
+            </div>
+
+            <div className="containstyle border border-[#eee] rounded-md">
+              {/* <Liststyletext /> */}
+              <textarea
+                placeholder="Some details..."
+                onChange={(e) => handleDetails(e.target.value, idx)}
+                className="w-full p-1" ></textarea>
             </div>
           </div>
-
-        </form>
+        ))}
+        <button className="focus:outline-none text-blue-600 w-full text-start" onClick={() => setEmploymentHistory([...employmentHistory, { startDate: '--', endDate: '--', companyName: 'Company Name', jobTitle: 'Job Title', details: 'Detials' }])}>+ Add One More</button>
       </div>
-      <h1 className="title_jop text-[red] text-center text-[2rem]"></h1>
-      <p className="coumpanies text-[red] text-center text-[2rem]"></p>
-      <p className="start text-[red] text-center text-[2rem]"></p>
-      <p className="end text-[red] text-center text-[2rem]"></p>
-      <p className="city text-[red] text-center text-[2rem]"></p>
-      <p className="textareaa text-[red] text-center text-[2rem]"></p>
-
-    </>
+    </div >
   )
 }
 export default EmploymentHistory;

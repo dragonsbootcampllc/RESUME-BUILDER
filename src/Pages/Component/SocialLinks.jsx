@@ -1,17 +1,18 @@
 // Menna =================
 import { useState } from 'react';
+import { useWebsiteURL, useFacebookURL, useTwitterURL, useLinkedInURL } from '../Data/SocialLinksData';
 
-const Sociallinks = () => {
+const SocialLinks = () => {
 
   const [showInputs, setShowInputs] = useState(false);
 
-  const [websiteURL, setWebsiteURL] = useState('');
+  const { setWebsiteURL } = useWebsiteURL();
 
-  const [facebookURL, setFacebookURL] = useState('');
+  const { setFacebookURL } = useFacebookURL();
 
-  const [twitterURL, setTwitterURL] = useState('');
+  const { setTwitterURL } = useTwitterURL();
 
-  const [linkedinURL, setLinkedinURL] = useState('');
+  const { setLinkedInURL } = useLinkedInURL();
 
 
   const handleToggleInputs = () => {
@@ -34,58 +35,55 @@ const Sociallinks = () => {
   };
 
   const handleLinkedinURLChange = (event) => {
-    setLinkedinURL(event.target.value);
+    setLinkedInURL(event.target.value);
   };
+
   return (
-    <div className="mt-4 ms-2 border-b w-[20rem]">
-      <div className="flex justify-between mb-2">
-        <h2 className="mr-2 font-bold text-gray-600">Website & Social Links</h2>
+    <div className="py-3 border-b border-gray-300 w-full">
+      <div className="flex justify-between px-6">
+        <h2 className="font-semibold leading-8 text-base">Website & Social Links</h2>
         <button
-          className="px-2 py-1 text-white bg-blue-500 rounded-md"
+          className="pl-4 text-2xl"
           onClick={handleToggleInputs}
         >
           {showInputs ? '–' : '+'}
         </button>
       </div>
 
-      {showInputs && (
-        <div>
-          <label className="block mb-2 text-gray-600">Website URL:</label>
-          <input
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            type="text"
-            value={websiteURL}
-            onChange={handleWebsiteURLChange}
-          />
+      <div className={`mt-6 flex flex-col gap-2 px-8 ${!showInputs && 'hidden'}`}>
+        <input
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          type="text"
+          placeholder='Website URL'
+          onChange={handleWebsiteURLChange}
+        />
 
-          <label className="block mt-4 mb-2 text-gray-600">Facebook URL:</label>
-          <input
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            type="text"
-            value={facebookURL}
-            onChange={handleFacebookURLChange}
-          />
+        <input
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          type="text"
+          placeholder='Facebook URL'
+          onChange={handleFacebookURLChange}
+        />
 
-          <label className="block mt-4 mb-2 text-gray-600">Twitter URL:</label>
-          <input
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            type="text"
-            value={twitterURL}
-            onChange={handleTwitterURLChange}
-          />
 
-          <label className="block mt-4 mb-2 text-gray-600">LinkedIn URL:</label>
-          <input
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-            type="text"
-            value={linkedinURL}
-            onChange={handleLinkedinURLChange}
-          />
-        </div>
-      )}
+        <input
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          type="text"
+          placeholder='Twitter URL'
+          onChange={handleTwitterURLChange}
+        />
+
+
+        <input
+          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          type="text"
+          placeholder='LinkedIn URL'
+          onChange={handleLinkedinURLChange}
+        />
+      </div>
     </div>
-  );
 
+  );
 };
 
-export default Sociallinks;
+export default SocialLinks;
