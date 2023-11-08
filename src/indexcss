@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.text-wrap {
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    white-space: normal; 
+    
+}
+  
+  
+.overflow-container {
+    overflow: hidden; 
+    
+}
