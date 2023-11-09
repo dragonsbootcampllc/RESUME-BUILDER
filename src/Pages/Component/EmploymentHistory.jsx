@@ -43,7 +43,7 @@ function EmploymentHistory() {
   }
 
   return (
-    <div className="py-3 border-b border-gray-300 w-full">
+    <div className="py-3 border-b border-primary-800 w-full">
       <div className="flex justify-between px-6">
         <h2 className="font-semibold leading-8 text-base">Employment history</h2>
         <button
@@ -58,48 +58,48 @@ function EmploymentHistory() {
         {employmentHistory.map((ele, idx) => (
           <div key={idx} className="flex flex-col gap-2">
             <div className="flex justify-between">
-              <h1 className="font-semibold text-gray-500">Employment {idx+1}</h1>
+              <h1 className="font-semibold text-primary-300">Employment {idx+1}</h1>
               {(idx > 0 && <button onClick={() => setEmploymentHistory(employmentHistory.filter((ele, CIdx)=>{return CIdx != idx}))} className="text-2xl leading-4 text-red-500 font-semibold">–</button>)}
             </div>
             <input
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="bg-transparent w-full px-3 py-2 border border-primary-700 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder-primary-400"
               type="text"
               placeholder='Job title'
               onChange={(e) => handleJobTitle(e.target.value, idx)}
             />
 
             <input
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+              className="bg-transparent w-full px-3 py-2 border border-primary-700 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder-primary-400"
               type="text"
               placeholder='Company name'
               onChange={(e) => handleCompanyName(e.target.value, idx)}
             />
 
-            <div className="rounded-md overflow-hidden flex border border-gray-300 ">
+            <div className="rounded-md overflow-hidden flex border border-primary-700 ">
               <input
-                className="w-full px-3 py-2 focus:outline-none text-sm"
+                className="w-full px-3 py-2 focus:outline-none text-sm placeholder-primary-400 bg-transparent"
                 type="date"
                 placeholder='Start Date'
                 onChange={(e) => handleStartDate(e.target.value, idx)}
               />
               <input
-                className="w-full px-3 py-2 border-l border-gray-300 focus:outline-none text-sm"
+                className="w-full px-3 py-2 border-l border-primary-700 focus:outline-none text-sm placeholder-primary-400 bg-transparent"
                 type="date"
                 placeholder='end Date'
                 onChange={(e) => handleEndDate(e.target.value, idx)}
               />
             </div>
 
-            <div className="containstyle border border-[#eee] rounded-md">
+            <div className="containstyle border border-primary-700 rounded-md">
               {/* <Liststyletext /> */}
               <textarea
                 placeholder="Some details..."
                 onChange={(e) => handleDetails(e.target.value, idx)}
-                className="w-full p-1" ></textarea>
+                className="w-full p-1 bg-transparent" ></textarea>
             </div>
           </div>
         ))}
-        <button className="focus:outline-none text-blue-600 w-full text-start" onClick={() => setEmploymentHistory([...employmentHistory, { startDate: '--', endDate: '--', companyName: 'Company Name', jobTitle: 'Job Title', details: 'Detials' }])}>+ Add One More</button>
+        <button className="focus:outline-none text-blue-100 w-full text-start" onClick={() => setEmploymentHistory([...employmentHistory, { startDate: '--', endDate: '--', companyName: 'Company Name', jobTitle: 'Job Title', details: 'Detials' }])}>+ Add One More</button>
       </div>
     </div >
   )

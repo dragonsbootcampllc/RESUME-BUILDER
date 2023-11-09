@@ -70,7 +70,7 @@ const PersonalInfoForm = () => {
   */
 
   return (
-    <div className="py-3 border-b border-gray-300 w-full">
+    <div className="py-3 border-b border-primary-800 w-full">
       <div className='flex justify-between px-6'>
         <h1 className="text-base leading-8 font-semibold" >Personal Information</h1>
         <button className='text-2xl pl-4' onClick={() => setButtonState(!buttonState)}>{(buttonState ? '–' : '+')}</button>
@@ -81,7 +81,7 @@ const PersonalInfoForm = () => {
           type="text"
           name="name"
           placeholder="Enter your name"
-          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          className="bg-transparent w-full border border-primary-700 p-2 placeholder-primary-400 focus:outline-none rounded-md"
           onChange={(e) => {
             nameHandler(e.target.value);
           }}
@@ -92,7 +92,7 @@ const PersonalInfoForm = () => {
           type="text"
           name="job-title"
           placeholder="Job title"
-          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          className="bg-transparent w-full border border-primary-700 p-2 placeholder-primary-400 focus:outline-none rounded-md"
           onChange={(e) => {
             jobHandler(e.target.value);
           }}
@@ -104,7 +104,7 @@ const PersonalInfoForm = () => {
           name="age"
           id="age"
           placeholder="Age"
-          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          className="bg-transparent w-full border border-primary-700 p-2 placeholder-primary-400 focus:outline-none rounded-md"
           onChange={(e) => {
             ageHandler(e.target.value);
           }}
@@ -115,7 +115,7 @@ const PersonalInfoForm = () => {
           type="text"
           name="phone"
           placeholder="Phone"
-          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          className="bg-transparent w-full border border-primary-700 p-2 placeholder-primary-400 focus:outline-none rounded-md"
           onChange={(e) => {
             phoneHandler(e.target.value);
           }}
@@ -127,60 +127,18 @@ const PersonalInfoForm = () => {
           name="email"
           type="email"
           placeholder="Email"
-          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          className="bg-transparent w-full border border-primary-700 p-2 placeholder-primary-400 focus:outline-none rounded-md"
           onChange={(e) => {
             emailHandler(e.target.value);
           }}
         />
-
-        {/* Streat */}
-        {/* <div className="ms-12 mt-2">
-          <input
-            type="text"
-            name="street-address"
-            placeholder="Stree address"
-            className="w-5/6 border border-gray-300 p-2 placeholder-gray-500 focus:outline-none"
-            onChange={(e) => {
-              streetHandler(e.target.value);
-            }}
-          />
-        </div> */}
-
-        {/* City */}
-        {/* <div className="ms-12 mt-2">
-          <input
-            type="text"
-            name="city"
-            placeholder="City"
-            className="w-5/6 border border-gray-300 p-2 placeholder-gray-500 focus:outline-none"
-            onChange={(e) => {
-              cityHandler(e.target.value);
-            }}
-          />
-        </div> */}
-
-        {/* Country */}
-        {/* <div className="ms-12 mt-2">
-          <select
-            name="country"
-            className="w-5/6 border border-gray-300 p-2 placeholder-gray-500 focus:outline-none"
-            onChange={(e) => {
-              countryHandler(e.target.value);
-            }}
-          >
-            <option>Egypt</option>
-            <option>United States</option>
-            <option>Canada</option>
-            <option>Mexico</option>
-          </select>
-        </div> */}
 
         {/* About */}
         <textarea
           name="about"
           rows={3}
           placeholder="Write a few sentences about yourself"
-          className="w-full border border-gray-300 p-2 placeholder-gray-500 focus:outline-none rounded-md"
+          className="bg-transparent w-full border border-primary-700 p-2 placeholder-primary-400 focus:outline-none rounded-md"
           defaultValue={''}
           onChange={(e) => {
             aboutHandler(e.target.value);
@@ -188,10 +146,10 @@ const PersonalInfoForm = () => {
         />
 
         {/* Image */}
-        <div className="text-center w-full rounded-lg border-dashed p-16 border border-gray-300 placeholder-gray-500 focus:outline-none" onDragOver={(event) => event.preventDefault()} onDrop={handleDrop}>
+        <div className="text-center w-full rounded-lg border-dashed p-16 border border-primary-700 text-primary-300 transition-all hover:text-primary-100 hover:border-primary-200 focus:outline-none" onDragOver={(event) => event.preventDefault()} onDrop={handleDrop}>
           <label
             htmlFor="image-upload"
-            className="cursor-pointer font-semibold text-indigo-600"
+            className="cursor-pointer font-semibold"
           >
             <span>Upload image</span>
             <input id="image-upload" name="file-upload" type="file" accept="image/*" className="sr-only"

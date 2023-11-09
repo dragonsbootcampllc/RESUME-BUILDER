@@ -39,7 +39,7 @@ const SocialLinks = () => {
   };
 
   return (
-    <div className="py-3 border-b border-gray-300 w-full">
+    <div className="py-3 border-b border-primary-800 w-full">
       <div className="flex justify-between px-6">
         <h2 className="font-semibold leading-8 text-base">Website & Social Links</h2>
         <button
@@ -52,14 +52,14 @@ const SocialLinks = () => {
 
       <div className={`mt-6 flex flex-col gap-2 px-8 ${!showInputs && 'hidden'}`}>
         <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="bg-transparent placeholder-primary-400 w-full px-3 py-2 border border-primary-700 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           type="text"
           placeholder='Website URL'
           onChange={handleWebsiteURLChange}
         />
 
         <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="bg-transparent placeholder-primary-400 w-full px-3 py-2 border border-primary-700 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           type="text"
           placeholder='Facebook URL'
           onChange={handleFacebookURLChange}
@@ -67,7 +67,7 @@ const SocialLinks = () => {
 
 
         <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="bg-transparent placeholder-primary-400 w-full px-3 py-2 border border-primary-700 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           type="text"
           placeholder='Twitter URL'
           onChange={handleTwitterURLChange}
@@ -75,7 +75,7 @@ const SocialLinks = () => {
 
 
         <input
-          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+          className="bg-transparent placeholder-primary-400 w-full px-3 py-2 border border-primary-700 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
           type="text"
           placeholder='LinkedIn URL'
           onChange={handleLinkedinURLChange}

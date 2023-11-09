@@ -1,4 +1,3 @@
-// Rahma =======================
 import { useUserName, useUserJob, useUserAge, useUserPhone, useUserEmail, useUserAbout, useUserImageUrl } from "../Data/PersonalInformationData";
 import { useWebsiteURL, useFacebookURL, useTwitterURL, useLinkedInURL } from '../Data/SocialLinksData';
 import { useEmploymentHistory } from "../Data/EmpoymentHistoryData";
@@ -26,7 +25,7 @@ function CVTemplate() {
     <section className='bg-white w-[21cm] h-[29.7cm] p-[50px]'>
       <div className=' flex  gap-20'>
         <div className="w-[150px] h-[150px] box-border rounded-full flex justify-center items-center overflow-hidden">
-          <img src={userImageUrl} className="w-full" />
+          <img src={userImageUrl} className="w-full" draggable="false"/>
         </div>
         <div>
           <p className=' font-semibold text-6xl w-[220px]'>{userName}</p>
