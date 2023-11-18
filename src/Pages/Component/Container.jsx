@@ -7,13 +7,13 @@ function Container(props) {
 
   return (
     <>
-      <section className="bg-gray-900/40   backdrop-blur-lg w-[calc(100%-320px)] h-full overflow-hidden overflow-y-scroll no-scroll" >
-        <Draggable ref={containerRef} >
-          <div>
+      <section className="bg-gray-900/40   backdrop-blur-lg w-[calc(100%-320px)] h-full overflow-hidden overflow-auto cursor-move no-scroll" >
+        <Draggable ref={containerRef}>
+        
             <div style={{ transform: `scale(${props.scale})` }} ref={props.targetRef}>
               <CVTemplate/>
             </div>
-          </div>
+        
         </Draggable>
       </section>
     </>
