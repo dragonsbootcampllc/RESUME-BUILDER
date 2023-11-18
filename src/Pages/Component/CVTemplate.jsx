@@ -22,7 +22,7 @@ function CVTemplate() {
   const { employmentHistory } = useEmploymentHistory();
 
   return (
-    <section className='bg-white w-[21cm] h-[29.7cm] p-[50px] box-border break-words '>
+    <section style={{ width: `100%` }} className='bg-white max-w-[21cm] h-[27.8cm] p-[50px] box-border break-words '>
       <div className=' flex  gap-20'>
         <div className="w-[150px] h-[150px] box-border rounded-full flex justify-center items-center overflow-hidden">
           <img src={userImageUrl} className="w-full" draggable="false"/>

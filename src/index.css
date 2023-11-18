@@ -20,6 +20,11 @@
 	background-color: #101010;
 	border: 0px solid #555555;
 }
+.react-pdf__Page__canvas {
+    margin: 0 auto;
+    width: 80% !important;
+    height: 100% !important;
+}
 
 
 
