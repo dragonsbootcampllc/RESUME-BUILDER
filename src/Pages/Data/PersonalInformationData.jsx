@@ -10,7 +10,7 @@ export const useUserJob = create((set) => ({
   setUserJob: (job) => set({userJob: job})
 }));
 
-export const useUserAge = create((set) => ({
+export const useUserAge = create((set) => ({ 
   userAge: "--",
   setUserName: (age) => set({userAge: age})
 }));

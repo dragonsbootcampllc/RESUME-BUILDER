@@ -3,9 +3,9 @@ import identity from '../../assets/Dragons_brand_2.svg';
 function Navbar() {
   return (
     <nav
-      className="border border-[rgb(255,255,255,0.08)] text-amber-50 h-[3.5rem] bg-gradient-to-bl bg-gray-900 z-[100] flex justify-between items-center px-12 fixed w-full  select-none top-0 left-0"
+      className=" text-amber-50 h-[3.5rem]  bg-gray-900 z-[100] flex justify-between items-center px-12 fixed w-full  select-none top-0 left-0"
     >
-      <a className="flex relative  " href="https://dragons.divzoon.com">
+      <a className="flex relative  " href="https://dragons.divzoon.com" target='_blank'>
         <img
           src={identity}
           alt="logo"

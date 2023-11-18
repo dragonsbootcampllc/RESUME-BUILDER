@@ -75,7 +75,7 @@ function App() {
     <div className="relative overflow-hidden">
       <Navbar />
       <main className="flex relative justify-end py-[2.5rem] mt-4 overflow-hidden h-screen box-border">
-        <nav className="w-[320px] fixed left-0 top-[3.5rem] bottom-[2.5rem] bg-primary-900/90 backdrop-blur-md z-50 flex flex-col justify-start overflow-y-scroll text-primary-100">
+        <nav className="w-[320px] scroll-auto overflow-auto fixed left-0 top-[3.5rem] bottom-[2.5rem] bg-primary-900/90 backdrop-blur-md z-50 flex flex-col justify-start  text-primary-100">
         
           <PersonalInfoForm />
           <Sociallinks />
