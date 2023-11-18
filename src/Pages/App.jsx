@@ -30,7 +30,7 @@ function App() {
     //   // margin is in MM, default is Margin.NONE = 0
     //   margin: Margin.SMALL,
     //   // default is 'A4'
-    //   format: 'letter',
+    //   format: 'letter',  
     //   // default is 'portrait'
     //   orientation: 'landscape',
     // },
@@ -76,6 +76,7 @@ function App() {
       <Navbar />
       <main className="flex relative justify-end py-[2.5rem] mt-4 overflow-hidden h-screen box-border">
         <nav className="w-[320px] fixed left-0 top-[3.5rem] bottom-[2.5rem] bg-primary-900/90 backdrop-blur-md z-50 flex flex-col justify-start overflow-y-scroll text-primary-100">
+        
           <PersonalInfoForm />
           <Sociallinks />
           <EmploymentHistory />
