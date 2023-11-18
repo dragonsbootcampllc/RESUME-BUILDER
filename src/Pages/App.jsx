@@ -30,7 +30,7 @@ function App() {
     //   // margin is in MM, default is Margin.NONE = 0
     //   margin: Margin.SMALL,
     //   // default is 'A4'
-    //   format: 'letter',
+    //   format: 'letter',  
     //   // default is 'portrait'
     //   orientation: 'landscape',
     // },
@@ -72,10 +72,11 @@ function App() {
   }
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative scroll-smooth overflow-auto  bg-black/80">
       <Navbar />
-      <main className="flex relative justify-end py-[2.5rem] mt-4 overflow-hidden h-screen box-border">
-        <nav className="w-[320px] fixed left-0 top-[3.5rem] bottom-[2.5rem] bg-primary-900/90 backdrop-blur-md z-50 flex flex-col justify-start overflow-y-scroll text-primary-100">
+      <main className="flex relative overflow-auto justify-end py-[2.5rem] mt-4  h-screen box-border">
+        <nav className="w-full max-w-[320px]  scroll-auto  overflow-auto fixed left-0 top-[3.5rem] bottom-[2.5rem] bg-primary-900/90 backdrop-blur-md z-50 flex flex-col justify-start  text-primary-100">
+        
           <PersonalInfoForm />
           <Sociallinks />
           <EmploymentHistory />
@@ -85,20 +86,21 @@ function App() {
         {/* CV Container */}
         <Container scale={scale} targetRef={targetRef} />
 
-        {/* Zoom in & Zoom out Buttons */}
-        <div className="fixed z-10 right-10 bottom-[5rem] flex gap-1 flex-col">
+        {/* Zoom in & Zoom out Buttons
+        <div className="fixed z-10 right-10 bottom-[5rem] bg-gray-500/20 hover:bg-gray-900 duration-300  p-2 rounded-2xl flex gap-1 flex-col">
           <Button1 classes="hover:!bg-primary-800 hover:!opacity-80"
             ClickFunc={handelZoomIn} Icon={HiZoomIn} />
           <Button1 classes="hover:!opacity-80 hover:!bg-red-600" ClickFunc={handelZoomOut} Icon={HiZoomOut} />
-        </div>
+        </div> */}
 
         {/* Download & View Buttons */}
-        <div className="fixed z-10 left-[calc(320px+2rem)] bottom-[5rem] flex gap-1 flex-col">
+
+
+      </main>
+      <div className="fixed z-10 left-[calc(320px+2rem)] bg-gray-500/20 hover:bg-gray-900 duration-300  p-2 rounded-2xl bottom-[5rem] flex gap-1 flex-col">
           <Button1 classes="hover:!bg-primary-800 hover:!opacity-80" ClickFunc={() => generatePDF(targetRef, optionsView)} Icon={HiEye} />
           <Button1 classes="" ClickFunc={() => generatePDF(targetRef, optionsDownload)} Icon={HiDownload} />
         </div>
-
-      </main>
       <Footer />
     </div>
   )

@@ -22,20 +22,20 @@ function CVTemplate() {
   const { employmentHistory } = useEmploymentHistory();
 
   return (
-    <section className='bg-white w-[21cm] h-[29.7cm] p-[50px]'>
+    <section className='bg-white w-[21cm] h-[29.7cm] p-[50px] box-border break-words '>
       <div className=' flex  gap-20'>
         <div className="w-[150px] h-[150px] box-border rounded-full flex justify-center items-center overflow-hidden">
           <img src={userImageUrl} className="w-full" draggable="false"/>
         </div>
         <div>
-          <p className=' font-semibold text-6xl w-[220px]'>{userName}</p>
-          <p className='text-2xl mt-5'>{userJob}</p>
+          <p className=' font-semibold text-4xl w-[220px]'>{userName}</p>
+          <p className='text-2xl mt-5 capitalize'>{userJob}</p>
         </div>
       </div>
 
       <div className=' flex gap-[15%] mt-[40px]'>
         <div className=' grid gap-[20px] w-[40%] xd:block'>
-          <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>education</p>
+          <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px] capitalize'>education</p>
 
           <div>
             <p >2014 - 2020</p>
@@ -56,7 +56,7 @@ function CVTemplate() {
           </div>
 
           <div>
-            <p className='font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>contact</p>
+            <p className='font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px] capitalize'>contact</p>
             <div className='flex flex-col gap-2 mt-2 text-lg'>
               <a className='text-blue-700 underline' href={`tel:${userPhone}`} >{userPhone}</a>
               <a className='text-blue-700 underline' href={`mailto:${userEmail}`} >{userEmail}</a>
@@ -69,11 +69,11 @@ function CVTemplate() {
         </div>
 
         <div>
-          <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 mb-[15px] text-[30px]' > profile </p>
+          <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 mb-[15px] text-[30px] capitalize' > profile </p>
 
-          <p className=' text-[20px] mb-[30px]'> {userAbout} </p>
+          <p className=' mb-[30px]'> {userAbout} </p>
 
-          <p className='  font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px] mb-[55px] ' >experience</p>
+          <p className='  font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px] mb-[55px] capitalize' >experience</p>
 
           <div className='flex gap-[40px]'>
             <div className='grid gap-[55px] xd:block'>

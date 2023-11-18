@@ -62,40 +62,42 @@ function EmploymentHistory() {
               {(idx > 0 && <button onClick={() => setEmploymentHistory(employmentHistory.filter((ele, CIdx)=>{return CIdx != idx}))} className="text-2xl leading-4 text-red-500 font-semibold">–</button>)}
             </div>
             <input
-              className="bg-transparent w-full px-3 py-2 border border-primary-700 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder-primary-400"
-              type="text"
+          className="bg-transparent w-full border border-gray-600  p-2 placeholder-gray-400 focus:outline-none rounded-md"
+          type="text"
               placeholder='Job title'
               onChange={(e) => handleJobTitle(e.target.value, idx)}
             />
 
             <input
-              className="bg-transparent w-full px-3 py-2 border border-primary-700 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 placeholder-primary-400"
-              type="text"
+          className="bg-transparent w-full border border-gray-600  p-2 placeholder-gray-400 focus:outline-none rounded-md"
+          type="text"
               placeholder='Company name'
               onChange={(e) => handleCompanyName(e.target.value, idx)}
             />
 
-            <div className="rounded-md overflow-hidden flex border border-primary-700 ">
+            <div className="rounded-md overflow-hidden flex gap-2 text-xs  ">
               <input
-                className="w-full px-3 py-2 focus:outline-none text-sm placeholder-primary-400 bg-transparent"
-                type="date"
+          className="bg-transparent w-full border border-gray-600  p-2 placeholder-gray-400 focus:outline-none rounded-md"
+          type="date"
                 placeholder='Start Date'
                 onChange={(e) => handleStartDate(e.target.value, idx)}
               />
               <input
-                className="w-full px-3 py-2 border-l border-primary-700 focus:outline-none text-sm placeholder-primary-400 bg-transparent"
-                type="date"
+          className="bg-transparent w-full border border-gray-600  p-2 placeholder-gray-400 focus:outline-none rounded-md"
+          type="date"
                 placeholder='end Date'
                 onChange={(e) => handleEndDate(e.target.value, idx)}
               />
             </div>
 
-            <div className="containstyle border border-primary-700 rounded-md">
+            <div className="containstyle rounded-md">
               {/* <Liststyletext /> */}
               <textarea
                 placeholder="Some details..."
                 onChange={(e) => handleDetails(e.target.value, idx)}
-                className="w-full p-1 bg-transparent" ></textarea>
+                className="bg-transparent w-full border border-gray-600  p-2 placeholder-gray-400 focus:outline-none rounded-md"
+                
+                ></textarea>
             </div>
           </div>
         ))}
