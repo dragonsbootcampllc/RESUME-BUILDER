@@ -25,18 +25,10 @@ function App() {
     // // using values higher than 10 when having multiple pages generated, it
     // // might cause the page to crash or hang.
     filename: 'Resume.pdf',
-    resolution: Resolution.HIGH,
-    // page: {
-    //   // margin is in MM, default is Margin.NONE = 0
-    //   margin: Margin.SMALL,
-    //   // default is 'A4'
-    //   format: 'letter',  
-    //   // default is 'portrait'
-    //   orientation: 'landscape',
-    // },
+    resolution: Resolution.LOW,
+  
     canvas: {
-      // default is 'image/jpeg' for better size performance
-      // mimeType: 'image/png',
+      // default is 'image/jpeg' 
       qualityRatio: 1
     },
     // Customize any value passed to the jsPDF instance and html2canvas
@@ -75,7 +67,7 @@ function App() {
     <div className="relative scroll-smooth overflow-auto  bg-black/80">
       <Navbar />
       <main className="flex relative overflow-auto justify-end py-[2.5rem] mt-4  h-screen box-border">
-        <nav className="w-full max-w-[320px]  scroll-auto  overflow-auto fixed left-0 top-[3.5rem] bottom-[2.5rem] bg-primary-900/90 backdrop-blur-md z-50 flex flex-col justify-start  text-primary-100">
+        <nav className="w-full max-w-[320px]  scroll-auto scrollbar overflow-auto fixed left-0 top-[3.5rem] bottom-[2.5rem] bg-primary-900/90 backdrop-blur-md z-50 flex flex-col justify-start  text-primary-100">
         
           <PersonalInfoForm />
           <Sociallinks />
