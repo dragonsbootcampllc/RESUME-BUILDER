@@ -31,6 +31,8 @@ export const useUserAbout = create((set) => ({
 }));
 
 export const useUserImageUrl = create((set) => ({
-  userImageUrl: "https://www.kevinashleyphotography.com/wp-content/uploads/2015/11/person.jpg",
-  setUserImageUrl: (imageUrl) => set({userImageUrl: imageUrl})
+  userImageUrl: '',
+  showImage: false,
+  setUserImageUrl: (imageUrl) => set({userImageUrl: imageUrl}),
+  setShowImage: (newState) => set({showImage: newState})
 }));

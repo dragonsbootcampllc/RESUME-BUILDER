@@ -2,6 +2,7 @@ import { useUserName, useUserJob, useUserAge, useUserPhone, useUserEmail, useUse
 import { useWebsiteURL, useFacebookURL, useTwitterURL, useLinkedInURL } from '../Data/SocialLinksData';
 import { useEmploymentHistory } from "../Data/EmpoymentHistoryData";
 import { useEducation } from "../Data/EducationData";
+import { RiUserLine } from "react-icons/ri";
 
 function CVTemplate() {
   // Personal information
@@ -10,7 +11,7 @@ function CVTemplate() {
   // const { userAge } = useUserAge();
   const { userPhone } = useUserPhone();
   const { userEmail } = useUserEmail();
-  const { userImageUrl } = useUserImageUrl();
+  const { userImageUrl, showImage } = useUserImageUrl();
   const { userAbout } = useUserAbout();
 
   // Social Links
@@ -29,7 +30,8 @@ function CVTemplate() {
       <section className='bg-white w-[21cm] h-[27.8cm] p-[50px]'>
         <div className='flex gap-20'>
           <div className="w-[150px] h-[150px] box-border rounded-full flex justify-center items-center overflow-hidden">
-            <img src={userImageUrl} className="w-full" draggable="false" />
+            {((showImage && userImageUrl != '') && <img src={userImageUrl} className="w-full" draggable="false" />)}<img src={userImageUrl} className="w-full" draggable="false" />
+            {((showImage && userImageUrl == '') && <span className="min-w-full min-h-full text-white bg-gray-400/70 flex justify-center items-center text-8xl"><RiUserLine /></span>)}<img src={userImageUrl} className="w-full" draggable="false" />  
           </div>
           <div>
             <p className=' font-semibold text-6xl w-[220px]'>{userName}</p>
