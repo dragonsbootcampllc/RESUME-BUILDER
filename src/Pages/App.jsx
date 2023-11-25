@@ -1,4 +1,5 @@
 import PersonalInfoForm from "./Component/PersonalInfoForm";
+import Education from "./Component/Education";
 import Container from "./Component/Container";
 import Sociallinks from "./Component/SocialLinks";
 import Footer from "./Component/Footer";
@@ -63,10 +64,12 @@ function App() {
       <Navbar />
       <main className="flex relative overflow-auto justify-end py-[2.5rem] mt-4  h-screen box-border">
         <nav className={`w-full max-w-[320px] scroll-auto scrollbar fixed left-0 ${(isSideBarActive?'-translate-x-full':'translate-x-0')} top-[3.5rem] bottom-[2.5rem] bg-primary-900/90 transition-all backdrop-blur-md z-50 flex flex-col justify-start text-primary-100`}>
-        
-          <PersonalInfoForm />
-          <Sociallinks />
-          <EmploymentHistory />
+          <div className="overflow-y-scroll h-full">
+            <PersonalInfoForm />
+            <Sociallinks />
+            <EmploymentHistory />
+            <Education />
+          </div>
           <button className="flex items-center justify-center box-border pr-1 w-10 absolute top-12 right-0 translate-x-full aspect-square bg-primary-900/90 backdrop-blur-md  rounded-r-xl" onClick={handleSideBarDisplay}>
             {(isSideBarActive?<HiArrowRight />:<HiArrowLeft />)}
           </button>

@@ -1,7 +1,5 @@
-// Abanoub ===========
 import { useState } from "react";
 import { useEmploymentHistory } from "../Data/EmpoymentHistoryData";
-// import Liststyletext from "./Liststyletext";
 
 function EmploymentHistory() {
   const [displayContent, setDisplayContent] = useState(false);
