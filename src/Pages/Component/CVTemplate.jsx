@@ -40,7 +40,7 @@ function CVTemplate() {
         </div>
         <div className=' flex gap-[15%] mt-[40px]'>
           <div className=' grid gap-[20px] w-[40%] xd:block'>
-            <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>education</p>
+            <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>Education</p>
             {education.map((ele, idx) => (
               <div key={idx}>
                 <p>{ele.startDate} - {ele.endDate}</p>
@@ -49,7 +49,7 @@ function CVTemplate() {
               </div>
             ))}
             <div>
-              <p className='font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>contact</p>
+              <p className='font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px]'>Contact</p>
               <div className='flex flex-col gap-2 mt-2 text-lg'>
                 <p className='font-semibold'>{userPhone}</p>
                 <p className='font-semibold'>{userEmail}</p>
@@ -62,11 +62,11 @@ function CVTemplate() {
           </div>
 
           <div className="overflow-hidden">
-            <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 mb-[15px] text-[30px]' > profile </p>
+            <p className=' font-bold pb-[20px] border-b-[1px] border-sky-600 mb-[15px] text-[30px]' > Profile </p>
 
             <p className=' text-[20px] mb-[30px] word-wrap break-word overflow-wrap break-word whitespace-normal'> {userAbout} </p>
 
-            <p className='  font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px] mb-[55px] ' >experience</p>
+            <p className='  font-bold pb-[20px] border-b-[1px] border-sky-600 text-[30px] mb-[55px] ' >Experience</p>
 
             <div className='flex gap-[40px]'>
               <div className='grid gap-[55px] xd:block'>

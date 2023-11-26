@@ -20,10 +20,29 @@ const PersonalInfoForm = () => {
     if (value === "") setUserJob("Job title");
     else setUserJob(value);
   };
-
+  
   const ageHandler = (value) => {
-    if (value === "") setUserAge("--");
-    else setUserAge(value);
+    if (value === "") {
+      setUserAge("--");
+    } else {
+      const birthdate = new Date(value);
+      const today = new Date();
+      const age = today.getFullYear() - birthdate.getFullYear();
+  
+      if (
+        (today.getMonth() < birthdate.getMonth()) ||
+        (today.getMonth() === birthdate.getMonth() && today.getDate() < birthdate.getDate())
+      ) {
+        setUserAge(age - 1);
+      } else {
+        setUserAge(age);
+      }
+  
+      if (age < 16) {
+        setUserAge("--");
+      }
+    }
+    console.log(age);
   };
 
   const phoneHandler = (value) => {
@@ -89,8 +108,8 @@ const PersonalInfoForm = () => {
         />
 
         {/* Age */}
-        <input
-          type="number"
+        {/* <input
+          type="date"
           name="age"
           id="age"
           placeholder="Age"
@@ -98,7 +117,7 @@ const PersonalInfoForm = () => {
           onChange={(e) => {
             ageHandler(e.target.value);
           }}
-        />
+        /> */}
 
         {/* Phone */}
         <input

@@ -43,7 +43,7 @@ function EmploymentHistory() {
   return (
     <div className="py-3 border-b border-primary-800 w-full">
       <div className="flex justify-between px-6">
-        <h2 className="font-semibold leading-8 text-base">Employment history</h2>
+        <h2 className="font-semibold leading-8 text-base">Employment History</h2>
         <button
           className="pl-4 text-2xl"
           onClick={() => setDisplayContent(!displayContent)}
