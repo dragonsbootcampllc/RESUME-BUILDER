@@ -1,7 +1,7 @@
-import { useUserName, useUserJob, useUserAge, useUserPhone, useUserEmail, useUserAbout, useUserImageUrl } from "../Data/PersonalInformationData";
-import { useWebsiteURL, useFacebookURL, useTwitterURL, useLinkedInURL } from '../Data/SocialLinksData';
-import { useEmploymentHistory } from "../Data/EmpoymentHistoryData";
-import { useEducation } from "../Data/EducationData";
+import { useUserName, useUserJob, useUserAge, useUserPhone, useUserEmail, useUserAbout, useUserImageUrl } from "../Data/PersonalInformation.data";
+import { useWebsiteURL, useFacebookURL, useTwitterURL, useLinkedInURL } from '../Data/SocialLinks.data';
+import { useEmploymentHistory } from "../Data/EmpoymentHistory.data";
+import { useEducation } from "../Data/Education.data";
 import { RiUserLine } from "react-icons/ri";
 
 function CVTemplate() {

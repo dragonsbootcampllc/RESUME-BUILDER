@@ -1,6 +1,6 @@
 // Menna =================
 import { useState } from 'react';
-import { useWebsiteURL, useFacebookURL, useTwitterURL, useLinkedInURL } from '../Data/SocialLinksData';
+import { useWebsiteURL, useFacebookURL, useTwitterURL, useLinkedInURL } from '../Data/SocialLinks.data';
 
 const SocialLinks = () => {
 

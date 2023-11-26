@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useEducation } from "../Data/EducationData";
+import { useEducation } from "../Data/Education.data";
 
 function Education() {
   const [displayContent, setDisplayContent] = useState(false);

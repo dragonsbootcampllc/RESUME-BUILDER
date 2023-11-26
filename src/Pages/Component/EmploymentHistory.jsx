@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useEmploymentHistory } from "../Data/EmpoymentHistoryData";
+import { useEmploymentHistory } from "../Data/EmpoymentHistory.data";
 
 function EmploymentHistory() {
   const [displayContent, setDisplayContent] = useState(false);
