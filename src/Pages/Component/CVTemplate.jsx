@@ -34,8 +34,8 @@ function CVTemplate() {
             {((showImage && userImageUrl == '') && <span className="min-w-full min-h-full text-white bg-gray-400/70 flex justify-center items-center text-8xl"><RiUserLine /></span>)}<img src={userImageUrl} className="w-full" draggable="false" />  
           </div>
           <div>
-            <p className=' font-semibold text-6xl w-[220px]'>{userName}</p>
-            <p className='mt-5 text-2xl'>{userJob}</p>
+            <p className={`font-semibold ${userName.length > 10 ? 'text-4xl' : 'text-6xl'}  min-w-[220px]`}>{userName}</p>
+            <p className={`mt-5 ${userJob.length > 20 ? 'text-xl' : 'text-2xl'}`}>{userJob}</p>
           </div>
         </div>
         <div className=' flex gap-[15%] mt-[40px]'>
