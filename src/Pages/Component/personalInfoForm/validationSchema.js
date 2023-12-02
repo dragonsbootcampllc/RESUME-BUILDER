@@ -39,15 +39,27 @@ const validationSchema = Yup.object({
         return true;
       }
     ),
-  phone: Yup.string()
-    .max(14, "Phone number should not exceed 14 characters")
-    .test("phone-length", "Phone number should not exceed 14 characters", (value) => {
-      if (value) {
-        const names = value.split(" ");
-        return names.every((name) => name.length <= 14);
-      }
-      return true;
-    }),
+    phone: Yup.string()
+    .matches(/^[0-9+]+$/, "Phone Number should only contain numbers and '+'")
+    .min(10, "Phone Number should be at least 10 numbers")
+    .max(14, "Phone Number can be 14 numbers at max")
+    .test(
+        "phone-length",
+        "Phone Number should be at least 10 numbers and can be at most 14 numbers",
+        (value) => {
+            if (value) {
+                // Check for spaces
+                if (value.includes(" ")) {
+                    return false; // Fail the validation if there is a space
+                }
+
+                // Check the length
+                return value.length >= 10 && value.length <= 14;
+            }
+            return true;
+        }
+    ),
+
   email: Yup.string()
     .max(50, "Email should not exceed 50 characters")
     .email()

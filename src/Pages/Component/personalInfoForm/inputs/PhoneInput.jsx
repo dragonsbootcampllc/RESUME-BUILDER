@@ -31,6 +31,9 @@ const PhoneInput = ({ formikProps, phoneHandler }) => {
         className={
           'bg-transparent w-full border  border-gray-600 p-2  placeholder-gray-400 focus:outline-none rounded-md '
         }
+        
+        pattern='^[0-9+]+$'
+
         onBlur={handleBlur}
         value={formikProps.values.phone}
       />
