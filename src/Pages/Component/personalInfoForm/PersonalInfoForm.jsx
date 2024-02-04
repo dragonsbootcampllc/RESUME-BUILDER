@@ -78,6 +78,7 @@ const PersonalInfoForm = ({
             className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600'
             checked={showImage}
             onChange={handleShowImage}
+           
           />
           <label htmlFor='displayImage' className='font-medium text-primary-300'>
             Display Photo?

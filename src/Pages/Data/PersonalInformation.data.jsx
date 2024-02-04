@@ -32,7 +32,7 @@ export const useUserAbout = create((set) => ({
 
 export const useUserImageUrl = create((set) => ({
   userImageUrl: '',
-  showImage: false,
+  showImage: true,
   setUserImageUrl: (imageUrl) => set({userImageUrl: imageUrl}),
   setShowImage: (newState) => set({showImage: newState})
 }));
