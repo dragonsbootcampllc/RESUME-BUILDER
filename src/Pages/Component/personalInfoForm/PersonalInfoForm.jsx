@@ -4,6 +4,8 @@ import JobTitleInput from './inputs/JobTitleInput';
 import PhoneInput from './inputs/PhoneInput';
 import EmailInput from './inputs/EmailInput';
 import AboutInput from './inputs/AboutInput';
+import {Checkbox} from "@nextui-org/react";
+
 
 const PersonalInfoForm = ({
   formikProps,
@@ -72,16 +74,8 @@ const PersonalInfoForm = ({
 />
         {/* Image */}
         <div className='flex items-center gap-2'>
-          <input
-            name='displayImage'
-            type='checkbox'
-            className='h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600'
-            checked={showImage}
-            onChange={handleShowImage}
-          />
-          <label htmlFor='displayImage' className='font-medium text-primary-300'>
-            Display Photo?
-          </label>
+          <Checkbox  checked={showImage} name='displayImage'
+            onChange={handleShowImage} className='font-medium text-primary-300' color="default">Display Photo?</Checkbox>
         </div>
         {showImage && (
           <div
